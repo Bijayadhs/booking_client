@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { login } from '../actions/auth';
 
-const LoginForm = () => {
-    const [name, setName] = useState('');
+const LoginForm = ({ history }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.table({ name, email, password });
+        try {
+            const response = await login({ email, password });
+            console.log('login', response.data);
+            toast.success('Login successful');
+            await history.push('/');
+        } catch (err) {
+            if (err.response.status === 400) {
+                toast.error(err.response.data)
+            }
+        }
 
     };
     return (
 
         <form onSubmit={handleSubmit} className="mt-3">
-            <div className="form-group mb-3">
-                <label className="form-label" htmlFor="name">Name</label>
-                <input type="text" className="form-control" placeholder='Name' value={name} onChange={e => setName(e.target.value)} />
-            </div>
+
             <div className="form-group mb-3">
                 <label className="form-label" htmlFor="name">Email</label>
                 <input type="email" className="form-control" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />

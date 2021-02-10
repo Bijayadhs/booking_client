@@ -1,8 +1,7 @@
 import React from 'react';
 import RegisterForm from '../components/RegisterForm';
 
-const Register = () => {
-
+const Register = ({ history }) => {
 
     return (
         <>
@@ -12,7 +11,7 @@ const Register = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
-                        <RegisterForm />
+                        <RegisterForm history={history} />
                     </div>
 
                 </div>

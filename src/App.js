@@ -6,11 +6,15 @@ import Navbar from './components/Navbar';
 import Login from './auth/Login';
 import Register from './auth/Register';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <ToastContainer position='bottom-center' draggable />
+
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />

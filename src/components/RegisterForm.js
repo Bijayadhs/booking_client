@@ -15,14 +15,14 @@ const RegisterForm = ({ history }) => {
             const response = await register({ name, email, password });
             console.log('Reg', response.data);
             toast.success('Registered successfully');
-            await history.push('/login');
+            // await history.push('/login');
         } catch (err) {
-            if (err.response.status === 400) {
-                toast.error(err.response.data)
-            }
+            console.log('Error:', err)
+            // toast.error(err.response.data)
         }
+    }
 
-    };
+
     return (
         <>
             <form onSubmit={handleSubmit} className="mt-3">
@@ -45,5 +45,6 @@ const RegisterForm = ({ history }) => {
         </>
 
     )
-}
+};
+
 export default RegisterForm;

@@ -1,22 +1,22 @@
-import React from 'react';
+import React from "react";
 import RegisterForm from '../components/RegisterForm';
 
-const Register = ({ history }) => {
 
-    return (
-        <>
-            <div className="bg-info container-fluid p-5 text-center">
-                <h1>Register Page</h1>
-            </div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
-                        <RegisterForm history={history} />
-                    </div>
+export const Register = ({ history }) => {
 
-                </div>
-            </div>
-        </>
-    )
-}
-export default Register;
+  return (
+    <>
+      <div className="bg-light container-fluid p-3 text-center">
+        <h2>Register</h2>
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 offset-3 ">
+
+            <RegisterForm history={history} />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};

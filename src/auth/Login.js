@@ -1,23 +1,19 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm';
 
-const Login = ({ history }) => {
-
-
+export const Login = ({ history }) => {
     return (
         <>
-            <div className="bg-info container-fluid p-5 text-center">
-                <h1>Login Page</h1>
+            <div className="bg-light container-fluid p-3 text-center">
+                <h2>Login</h2>
             </div>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
+                    <div className="col-md-6 offset-3 ">
                         <LoginForm history={history} />
                     </div>
-
                 </div>
             </div>
         </>
     )
 }
-export default Login;

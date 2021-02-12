@@ -1,22 +1,31 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { login } from '../actions/auth';
+import { useDispatch } from 'react-redux';
 
 const LoginForm = ({ history }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await login({ email, password });
-            console.log('login', response.data);
+            const res = await login({ email, password });
+            console.log('login', res.data);
             toast.success('Login successful');
-            await history.push('/');
+            // local storages
+            window.localStorage.setItem('auth', JSON.stringify(res.data))
+            // dispatch state
+            dispatch({ type: 'LOGGED_IN_USER', payload: res.data })
+            await history.push('/dashboard');
         } catch (err) {
+            console.log(err)
             if (err.response.status === 400) {
                 toast.error(err.response.data)
             }
+
+
         }
 
     };
